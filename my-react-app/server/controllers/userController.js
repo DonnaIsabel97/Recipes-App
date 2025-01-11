@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const bcryptjs = require('bcryptjs');
 
 const userController = {};
 
@@ -8,7 +9,7 @@ userController.createUser = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      console.error("Missing propertie sin request body");
+      console.error("Missing propertie in request body");
 
       return next({
         log: "Missing required properties in request body",
@@ -18,9 +19,7 @@ userController.createUser = async (req, res, next) => {
     }
 
     //Check if user already exists
-
     const existingUser = await User.findOne({ email });
-
     if (existingUser) {
       console.error("Email already exists");
       return res.status(409).json({ error: "Email already exists" });
@@ -28,7 +27,7 @@ userController.createUser = async (req, res, next) => {
 
     // Create a new user and return in a response
     const user = new User({
-      username,
+      email,
       password,
     });
 
@@ -70,10 +69,14 @@ userController.verifyUser = async (req, res, next) => {
       return next({
         log: "Invalid Password",
         status: 401,
-        message: "Incalid Password ",
+        message: "Invalid Password ",
       });
     }
-    (res.locals.user = { email: user.email }), next();
+    req.session.userId = user._id;
+    // Response with the user information
+    res.locals.user = user, 
+    next();
+    
   } catch (err) {
     next(err);
   }
