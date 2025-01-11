@@ -52,6 +52,11 @@ app.get('/', (req, res) => {
 
 })
 
+
+app.get('/recipes', recipesController.getRecipes, (req,res) => {
+  return res.status(200).send(res.locals.recipes)
+})
+
 // POST request
 
 // Sign up route with response
