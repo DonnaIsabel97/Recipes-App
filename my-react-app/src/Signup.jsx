@@ -30,7 +30,7 @@ const Signup = () => {
     } catch (error) {
       console.error('Signup failed:', error);
     }
-    //window.location.href = 'http://localhost:5173';
+    window.location.href = 'http://localhost:5173';
   };
 
   return (
