@@ -1,8 +1,13 @@
 .recipe-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .recipe-container > .recipe-category,
@@ -42,6 +47,15 @@
   margin-bottom: 20px;
 }
 
-button {
+.favorite-button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
