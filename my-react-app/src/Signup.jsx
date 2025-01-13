@@ -10,8 +10,8 @@ const Signup = () => {
             return;
         }
         const userData = {
-            emailValue,
-            passwordValue,
+            email: emailValue,
+            password: passwordValue,
         }
         try {
             const response = await fetch('http://localhost:8080/createUsers', {
@@ -19,7 +19,7 @@ const Signup = () => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                credentials: 'include',
+                // credentials: 'include',
                 body: JSON.stringify(userData),
             });
             const data = await response.json();

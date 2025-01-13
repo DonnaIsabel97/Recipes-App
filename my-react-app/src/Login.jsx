@@ -4,7 +4,7 @@ const Login = () => {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
-    const saveLoginInfo = (event) => {
+    const checkLoginInfo = (event) => {
         event.preventDefault();
         if (!emailValue || !passwordValue) {
             return;
@@ -18,7 +18,7 @@ const Login = () => {
 
     return(
         <div className="LoginContainer">
-            <form onSubmit={saveLoginInfo}>
+            <form onSubmit={checkLoginInfo}>
                 <div>
                     Email: 
                     <input type="text" value={emailValue} onChange={(e) => setEmailValue(e.target.value)}></input>
