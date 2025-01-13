@@ -66,6 +66,9 @@ app.get('/recipes', recipesController.getRecipes, (req, res) => {
 
 // Sign up route with response
 app.post('/createUser', userController.createUser, (req, res) => {
+  const { email } = res.locals.newUser;
+
+  console.log(`${email} signed up successfully`);
   return res.status(200).send(res.locals.newUser);
 });
 
