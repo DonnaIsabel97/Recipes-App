@@ -5,8 +5,6 @@ import Profile from './Profile';
 import Login from './Login';
 import Signup from './Signup';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
 function App() {
   const location = useLocation();
