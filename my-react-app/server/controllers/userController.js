@@ -9,7 +9,7 @@ userController.createUser = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      console.error("Missing propertie in request body");
+      console.error("Missing property in request body");
 
       return next({
         log: "Missing required properties in request body",

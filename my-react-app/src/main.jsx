@@ -6,6 +6,7 @@ import './Navbar.css';
 import './Dashboard.css';
 import './Profile.css';
 import './Recipedetails.css';
+import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

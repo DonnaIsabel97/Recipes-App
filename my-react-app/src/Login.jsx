@@ -1,12 +1,12 @@
 import React, { use, useState } from "react";
 
 const Login = () => {
-    const [usernameValue, setUsernameValue] = useState('');
+    const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
     const saveLoginInfo = (event) => {
         event.preventDefault();
-        if (!usernameValue || !passwordValue) {
+        if (!emailValue || !passwordValue) {
             return;
         }
         
@@ -20,8 +20,8 @@ const Login = () => {
         <div className="LoginContainer">
             <form onSubmit={saveLoginInfo}>
                 <div>
-                    Username: 
-                    <input type="text" value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)}></input>
+                    Email: 
+                    <input type="text" value={emailValue} onChange={(e) => setEmailValue(e.target.value)}></input>
                 </div>
                 <div>
                     Password: 
