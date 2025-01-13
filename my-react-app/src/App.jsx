@@ -1,21 +1,19 @@
-import { useState, useEfect } from 'react';
-import './App.css';
-import Login from './Login';
-import Signup from './Signup';
+import Dashboard from './Dashboard';
+import RecipeDetails from './RecipeDetails';
+import Navbar from './Navbar';
+import Profile from './Profile';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  if (window.location.href == "http://localhost:5173/signup") {
-    return (
-      <div>
-        <Signup></Signup>
-      </div>
-    );
-  }
-  //if the url is the search url and this user is logged in
-    //then render the search stuff
   return (
     <div>
-      <Login></Login>
+      <Navbar />
+
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/recipe/:idMeal' element={<RecipeDetails />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
     </div>
   );
 }
