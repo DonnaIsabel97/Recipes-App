@@ -12,7 +12,11 @@ const recipesController = require("./controllers/recipeController");
 
 
 dotenv.config();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET, POST, DELETE, PUT'],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Serve static files from the dist folder
