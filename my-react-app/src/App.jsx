@@ -5,12 +5,13 @@ import Profile from './Profile';
 import Login from './Login';
 import Signup from './Signup';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 function App() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname !== '/signup' && location.pathname !== '/' && <Navbar />}
+      {location.pathname !== '/signup' && location.pathname !== '/' && (
+        <Navbar />
+      )}
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
@@ -21,5 +22,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
