@@ -70,7 +70,10 @@ function Dashboard() {
 
   return (
     <div>
-      <h1> Search</h1>
+      <div className='search-title'>
+        <h1> Search</h1>
+      </div>
+
       <div className='search-container'>
         <form onSubmit={handleOnSubmit}>
           <select onChange={handleQueryTypeChange} value={queryType}>

@@ -62,6 +62,12 @@ app.get("/recipes", recipesController.getRecipes, (req, res) => {
   return res.status(200).send(res.locals.recipes);
 });
 
+app.get("/savedRecipes");
+
+app.get("/search/:title", recipesController.searchRecipesByName, (req, res) => {
+  return res.status(200).send(res.locals.recipebyName);
+});
+
 // POST request
 
 // Sign up route with response
