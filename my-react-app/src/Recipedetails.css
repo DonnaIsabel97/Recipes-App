@@ -7,7 +7,7 @@
 
 .recipe-container > .recipe-category,
 .recipe-container > .recipe-area {
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 .recipe-image {
   max-width: 25%;
@@ -18,7 +18,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .ingredients-container ul {
@@ -40,7 +39,7 @@
   text-align: center;
   max-width: 90%;
   line-height: 1.5;
-  margin-bottom: 20px; /
+  margin-bottom: 20px;
 }
 
 button {
