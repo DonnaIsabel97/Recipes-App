@@ -9,10 +9,6 @@ const Signup = () => {
         if (!emailValue || !passwordValue) {
             return;
         }
-        const userData = {
-            email: emailValue,
-            password: passwordValue,
-        }
         try {
             const response = await fetch('http://localhost:8080/createUsers', {
                 method: 'POST',
@@ -20,7 +16,10 @@ const Signup = () => {
                     'content-type': 'application/json'
                 },
                 // credentials: 'include',
-                body: JSON.stringify(userData),
+                body: JSON.stringify({
+                    emailValue,
+                    passwordValue,
+                }),
             });
             const data = await response.json();
             if (!response.ok) {
