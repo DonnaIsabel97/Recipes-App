@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   // need to create state for search
@@ -9,6 +10,9 @@ function Dashboard() {
 
   // handle state for drop (changes query type depending on drop down)
   const [queryType, setQueryType] = useState('name');
+
+  // using library to navigate through routes
+  const navigate = useNavigate();
 
   // need to create handlers for input change
   const handleInputChange = (event) => {
@@ -28,6 +32,9 @@ function Dashboard() {
     setQueryType(event.target.value);
   };
 
+  const handleRedirect = (idMeal) => {
+    navigate(`/recipe/${idMeal}`);
+  };
   // need to create fetch function
   const getRecipe = async () => {
     let url = '';
@@ -55,20 +62,11 @@ function Dashboard() {
     }
   };
 
-  // f;la
   useEffect(() => {
     if (searchValue.trim() === '') {
       setSearchResult([]); // Clear search results if search value is empty
     }
   }, [searchValue]);
-
-  // logs info after state is updated
-  useEffect(() => {
-    // console.log('searchResult changed:', searchResult);
-    if (searchResult.length > 0) {
-      console.log(searchResult);
-    }
-  }, [searchResult]);
 
   return (
     <div>
@@ -94,8 +92,18 @@ function Dashboard() {
         <ul>
           {searchResult.map((meal) => (
             <li key={meal.idMeal}>
-              <h3>{meal.strMeal}</h3>
-              <img src={meal.strMealThumb} alt={meal.strMeal} />
+              <h3
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleRedirect(meal.idMeal)}
+              >
+                {meal.strMeal}
+              </h3>
+              <img
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleRedirect(meal.idMeal)}
+              />
               <p>
                 {meal.strArea} - {meal.strCategory}
               </p>
