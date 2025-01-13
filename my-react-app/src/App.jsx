@@ -2,6 +2,9 @@ import Dashboard from './Dashboard';
 import RecipeDetails from './RecipeDetails';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import Login from './Login';
+import Signup from './Signup';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -9,9 +12,12 @@ function App() {
   const location = useLocation();
   return (
     <div>
-      <Navbar />
-
+      {location.pathname !== '/signup' && location.pathname !== '/' && (
+        <Navbar />
+      )}
       <Routes>
+        <Route path='/search' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/search' element={<Dashboard />} />
         <Route path='/recipe/:idMeal' element={<RecipeDetails />} />
         <Route path='/profile' element={<Profile />} />

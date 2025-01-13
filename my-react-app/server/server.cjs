@@ -11,17 +11,18 @@ const userController = require('./controllers/userController');
 const recipesController = require('./controllers/recipeController');
 
 dotenv.config();
-app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: ['GET, POST, DELETE, PUT'],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET, POST, DELETE, PUT'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Serve static files from the dist folder
-// app.use(express.static(path.resolve(__dirname, "../dist")));
-
-console.log('Connecting to MongoDB with URI:', process.env.MONGODB_URI); // this its undefined - fixed :)
+app.use(express.static(path.resolve(__dirname, '../dist'))),
+  console.log('Connecting to MongoDB with URI:', process.env.MONGODB_URI); // this its undefined - fixed :)
 
 app.use(
   session({
@@ -71,7 +72,6 @@ app.post('/verifyUser', userController.verifyUser, (req, res) => {
 });
 
 // Global handler
-
 app.use((err, req, res, next) => {
   console.error(err.log || err.message);
   res
