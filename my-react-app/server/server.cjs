@@ -11,8 +11,8 @@ const userController = require('./controllers/userController');
 const recipesController = require('./controllers/recipeController');
 
 dotenv.config();
-console.log(process.env.MONGODB_URI);
-console.log(process.env.SESSION_SECRET);
+console.log('MongoDB URI:', process.env.MONGODB_URI);
+console.log('Session secret:', process.env.SESSION_SECRET);
 app.use(
   cors({
     origin: 'http://localhost:5173',
@@ -24,8 +24,8 @@ app.use(
 app.use(express.json());
 
 // Serve static files from the dist folder
-app.use(express.static(path.resolve(__dirname, '../dist'))),
-  console.log('Connecting to MongoDB with URI:', process.env.MONGODB_URI); // this its undefined - fixed :)
+// app.use(express.static(path.resolve(__dirname, "../dist"))),
+console.log('Connecting to MongoDB with URI:', process.env.MONGODB_URI); // this its undefined - fixed :)
 
 app.use(
   session({
@@ -62,10 +62,19 @@ app.get('/recipes', recipesController.getRecipes, (req, res) => {
   return res.status(200).send(res.locals.recipes);
 });
 
+app.get('/savedRecipes');
+
+app.get('/search/:title', recipesController.searchRecipesByName, (req, res) => {
+  return res.status(200).send(res.locals.recipebyName);
+});
+
 // POST request
 
 // Sign up route with response
 app.post('/createUser', userController.createUser, (req, res) => {
+  const { email } = res.locals.newUser;
+
+  console.log(`${email} signed up successfully`);
   return res.status(200).send(res.locals.newUser);
 });
 

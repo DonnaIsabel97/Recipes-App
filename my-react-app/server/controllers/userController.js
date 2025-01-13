@@ -42,7 +42,7 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
   try {
-    const { email } = req.body;
+    const { email, password } = req.body;
 
     // Search for the email
     const user = await User.findOne({ email });
@@ -89,7 +89,7 @@ userController.savedRecipes = async (req, res, next) => {
     const userId = req.params.userId;
 
     // search for the user id
-    const user = await User.findbyId(userId);
+    const user = await User.findById(userId);
 
     // checks if the user exists
     if (!user) {
@@ -103,7 +103,7 @@ userController.savedRecipes = async (req, res, next) => {
     res.locals.savedRecipes = user.savedRecipes;
     next();
   } catch (err) {
-    next(next);
+    next(err);
   }
 };
 

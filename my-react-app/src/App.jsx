@@ -5,7 +5,6 @@ import Profile from './Profile';
 import Login from './Login';
 import Signup from './Signup';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 function App() {
   const location = useLocation();
   return (
@@ -23,5 +22,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
