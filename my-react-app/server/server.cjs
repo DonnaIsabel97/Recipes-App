@@ -14,14 +14,15 @@ dotenv.config();
 app.use(
   cors({
     origin: 'http://localhost:5173',
-    methods: ['GET, POST, DELETE, PUT'],
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
 app.use(express.json());
 
 // Serve static files from the dist folder
-app.use(express.static(path.resolve(__dirname, "../dist"))),
+// app.use(express.static(path.resolve(__dirname, "../dist"))),
 console.log('Connecting to MongoDB with URI:', process.env.MONGODB_URI); // this its undefined - fixed :)
 
 app.use(
