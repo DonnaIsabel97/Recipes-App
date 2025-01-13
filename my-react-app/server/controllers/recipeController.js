@@ -10,7 +10,7 @@ recipeController.getRecipes = async (req, res, next) => {
     // www.themealdb.com/api/json/v1/1/search.php?s="variable"
 
     if (!response) {
-      console.err('Failed to fetch data');
+      console.error('Failed to fetch data');
       next({
         log: 'Failed to fetch data',
         status: 404,

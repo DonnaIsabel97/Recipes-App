@@ -49,7 +49,7 @@ userController.verifyUser = async (req, res, next) => {
 
     // checks if the email exists
     if (!user) {
-      console.err('User not found');
+      console.error('User not found');
       return next({
         log: 'User not found',
         status: 404,
@@ -65,7 +65,7 @@ userController.verifyUser = async (req, res, next) => {
 
     // checks if the password its invalid
     if (!isPassValid) {
-      console.err('Invalid Password');
+      console.error('Invalid Password');
       return next({
         log: 'Invalid Password',
         status: 401,
@@ -76,7 +76,7 @@ userController.verifyUser = async (req, res, next) => {
     console.log('session id', req.session.userId),
       (req.session.userId = user._id);
     // Response with the user information
-    console.log('user id is equal with the sesion?', user._id);
+    console.log('user id is equal with the session?', user._id);
     res.locals.user = user;
     next();
   } catch (err) {
