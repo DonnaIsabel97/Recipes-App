@@ -22,15 +22,13 @@ const Signup = () => {
         }),
       });
       const data = await response.json();
-      console.log('Response status:', response.status);
-      console.log('Response body:', data);
       if (!response.ok) {
         throw new Error('Failed to create user');
       }
     } catch (error) {
       console.error('Signup failed:', error);
     }
-    window.location.href = 'http://localhost:5173';
+    //window.location.href = 'http://localhost:5173';
   };
 
   return (
