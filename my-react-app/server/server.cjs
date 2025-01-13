@@ -11,6 +11,8 @@ const userController = require('./controllers/userController');
 const recipesController = require('./controllers/recipeController');
 
 dotenv.config();
+console.log(process.env.MONGODB_URI);
+console.log(process.env.SESSION_SECRET);
 app.use(
   cors({
     origin: 'http://localhost:5173',

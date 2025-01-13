@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'; // using this instead of   window.
 function RecipeDetails() {
   const { idMeal } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [isFavorite, setisFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (idMeal) {
@@ -24,6 +24,26 @@ function RecipeDetails() {
       setRecipe(data.meals ? data.meals[0] : null);
     } catch (error) {
       console.error('Error fetching recipe details:', error);
+    }
+  };
+  // save recipe
+  const handleFavorite = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/savedRecipe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ recipe }), // Send the recipe data to the backend
+      });
+
+      if (response.ok) {
+        setIsFavorite(!isFavorite);
+      } else {
+        console.error('Failed to save recipe');
+      }
+    } catch (error) {
+      console.error('Error saving recipe:', error);
     }
   };
   if (!recipe) {
@@ -60,10 +80,7 @@ function RecipeDetails() {
             <p>{recipe.strInstructions}</p>
           </div>
 
-          <button
-            className='favorite-button'
-            onClick={() => setIsFavorite(!isFavorite)}
-          >
+          <button className='favorite-button' onClick={handleFavorite}>
             {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
           </button>
         </div>
