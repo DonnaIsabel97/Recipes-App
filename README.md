@@ -19,3 +19,6 @@ git commit
 
 -Push the changes to the remote dev branch
 git push origin dev
+
+to connect both frontend backend
+npm run build
