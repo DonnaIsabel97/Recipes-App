@@ -12,7 +12,7 @@ const Signup = () => {
         window.location.href = "http://localhost:5173";
     }
 
-    return(
+    return (
         <div className="SignupContainer">
             <form onSubmit={saveSignupInfo}>
                 <div>
