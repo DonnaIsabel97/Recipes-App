@@ -16,6 +16,7 @@
 }
 .recipe-image {
   max-width: 25%;
+  border-radius: 1rem;
 }
 
 .ingredients-container {
