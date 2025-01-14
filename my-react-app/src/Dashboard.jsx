@@ -70,9 +70,7 @@ function Dashboard() {
 
   return (
     <div>
-      <div className='search-title'>
-        <h1> Search</h1>
-      </div>
+      <div className='search-title'></div>
 
       <div className='search-container'>
         <form onSubmit={handleOnSubmit}>
